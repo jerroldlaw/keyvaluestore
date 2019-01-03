@@ -48,6 +48,7 @@ npm start
 ```
 npm test
 ```
+The mocha and chai libraries were used to automatically test the endpoints. A screenshow below illustrates the test results.
 ![test results](https://i.imgur.com/kvD7eNM.png)
 
 ## Assumptions
