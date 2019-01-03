@@ -128,6 +128,29 @@ describe('KeyStore', () => {
   })
 
   /*
+  * Test GET key with invalid timestamp query
+  */
+  describe('/GET object', () => {
+    it('it should not GET the value of a key with invalid timestamp query', (done) => {
+      let object = {
+        myKey: "myValue"
+      }
+
+      chai.request(server)
+      .post('/object')
+      .send(object)
+      .end((err, res) => {
+        chai.request(server)
+        .get(`/object/myKey?timestamp=a` )
+        .end((err, res) => {
+          res.should.have.status(400)
+          done()
+        })
+      })
+    })
+  })
+
+  /*
   * Test GET previous key with timestamp query
   */
   describe('/GET object', () => {
