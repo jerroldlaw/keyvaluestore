@@ -76,7 +76,7 @@ describe('KeyStore', () => {
   /*
   * Test GET key
   */
-  describe('/POST object', () => {
+  describe('/GET object', () => {
     it('it should GET the value of a key', (done) => {
       let object = {
         myKey: "myValue"
@@ -103,7 +103,7 @@ describe('KeyStore', () => {
   /*
   * Test GET key with timestamp query
   */
-  describe('/POST object', () => {
+  describe('/GET object', () => {
     it('it should GET the value of a key with timestamp query', (done) => {
       let object = {
         myKey: "myValue"
@@ -130,7 +130,7 @@ describe('KeyStore', () => {
   /*
   * Test GET previous key with timestamp query
   */
-  describe('/POST object', () => {
+  describe('/GET object', () => {
     it('it should GET the value of a previous key with timestamp query', (done) => {
       let prevObject = {
         key: "prevValue"
