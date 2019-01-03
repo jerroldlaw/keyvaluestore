@@ -37,5 +37,7 @@ Body:     JSON: {mykey : value2}
 Response: {"key":"mykey", "value":"value2", "timestamp": time }
 ```
 
+## Assumptions
+Since no constraints were specified, the POST method will allow any non-null input for both the key and value input of any length.
 
 
