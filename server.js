@@ -11,6 +11,6 @@ app.use(bodyParser.json())
 var routes   = require('./app/routes')
 app.use('/', routes)
 
-app.listen(port, () => console.log(`Vault key store app listening on port ${port}!`))
+app.listen(port, () => console.log(`Vault key store app listening on port ${port}!\n`))
 
 module.exports = app

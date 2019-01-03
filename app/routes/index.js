@@ -15,6 +15,9 @@ router.get('/object/:key', function(req, res) {
   if (!timestamp) {
     timestamp = Date.now() / 1000
   }
+  if (isNaN(timestamp)){
+    return errorHandler.invalidInputHandler(res)
+  }
 
 	keystore.getKey(key, timestamp).then(result => {
     if (result) {
