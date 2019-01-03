@@ -1,16 +1,20 @@
 // During the test the env variable is set to test
-process.env.NODE_ENV = 'test';
+process.env.NODE_ENV = 'test'
 
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http')
+const should = chai.should()
 
-chai.use(chaiHttp);
+let server = require('../server')
+let db = require('../app/config/db')
+
+chai.use(chaiHttp)
 //Our parent block
 describe('KeyStore', () => {
   beforeEach((done) => { // Before each test we will empty the database
-    done()
+    db.none('DELETE FROM keys').then(() => {
+      done()
+    })
   })
 
   /*
@@ -19,7 +23,7 @@ describe('KeyStore', () => {
   describe('/POST object', () => {
     it('it should POST and set the value of a key', (done) => {
       let object = {
-        mykey: "myvalue"
+        myKey: "myValue"
       }
 
       chai.request(server)
@@ -28,8 +32,8 @@ describe('KeyStore', () => {
       .end((err, res) => {
         res.should.have.status(200)
         res.body.should.be.a('object')
-        res.body.key.should.eql('mykey')
-        res.body.value.should.eql('myvalue')
+        res.body.key.should.eql('myKey')
+        res.body.value.should.eql('myValue')
         res.body.timestamp.should.not.be.null
         done()
       })
@@ -75,7 +79,7 @@ describe('KeyStore', () => {
   describe('/POST object', () => {
     it('it should GET the value of a key', (done) => {
       let object = {
-        mykey: "myvalue"
+        myKey: "myValue"
       }
 
       chai.request(server)
@@ -83,12 +87,12 @@ describe('KeyStore', () => {
       .send(object)
       .end((err, res) => {
         chai.request(server)
-        .get('/object/mykey')
+        .get('/object/myKey')
         .end((err, res) => {
           res.should.have.status(200)
           res.body.should.be.a('object')
-          res.body.key.should.eql('mykey')
-          res.body.value.should.eql('myvalue')
+          res.body.key.should.eql('myKey')
+          res.body.value.should.eql('myValue')
           res.body.timestamp.should.not.be.null
           done()
         })
@@ -102,7 +106,7 @@ describe('KeyStore', () => {
   describe('/POST object', () => {
     it('it should GET the value of a key with timestamp query', (done) => {
       let object = {
-        mykey: "myvalue"
+        myKey: "myValue"
       }
 
       chai.request(server)
@@ -110,12 +114,12 @@ describe('KeyStore', () => {
       .send(object)
       .end((err, res) => {
         chai.request(server)
-        .get(`/object/mykey?timestamp=${Date.now()}` )
+        .get(`/object/myKey?timestamp=${Date.now()}` )
         .end((err, res) => {
           res.should.have.status(200)
           res.body.should.be.a('object')
-          res.body.key.should.eql('mykey')
-          res.body.value.should.eql('myvalue')
+          res.body.key.should.eql('myKey')
+          res.body.value.should.eql('myValue')
           res.body.timestamp.should.not.be.null
           done()
         })
@@ -129,10 +133,10 @@ describe('KeyStore', () => {
   describe('/POST object', () => {
     it('it should GET the value of a previous key with timestamp query', (done) => {
       let prevObject = {
-        key: "prevvalue"
+        key: "prevValue"
       }
       let nextObject = {
-        key: "nextvalue"
+        key: "nextValue"
       }
 
       chai.request(server)
@@ -152,7 +156,7 @@ describe('KeyStore', () => {
               res.should.have.status(200)
               res.body.should.be.a('object')
               res.body.key.should.eql('key')
-              res.body.value.should.eql('prevvalue')
+              res.body.value.should.eql('prevValue')
               res.body.timestamp.should.not.be.null
               done()
             })
