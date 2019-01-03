@@ -21,7 +21,10 @@ router.get('/object/:key', function(req, res) {
 
 	keystore.getKey(key, timestamp).then(result => {
     if (result) {
-      return res.json(result)
+      let response = {
+        value: result.value
+      }
+      return res.json(response)
     }
     else {
       return res.send('There isn\'t a key set before this timestamp.')
