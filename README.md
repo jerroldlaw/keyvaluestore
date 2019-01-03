@@ -49,7 +49,7 @@ npm start
 npm test
 ```
 The mocha and chai libraries were used to automatically test the endpoints. A screenshow below illustrates the test results.
-![test results](https://i.imgur.com/kvD7eNM.png)
+![test results](https://i.imgur.com/rO8RfXZ.png)
 
 ## Assumptions
 Since no constraints were specified, the POST method will allow any non-null input for both the key and value input of any length.
