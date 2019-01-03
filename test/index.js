@@ -91,9 +91,7 @@ describe('KeyStore', () => {
         .end((err, res) => {
           res.should.have.status(200)
           res.body.should.be.a('object')
-          res.body.key.should.eql('myKey')
           res.body.value.should.eql('myValue')
-          res.body.timestamp.should.not.be.null
           done()
         })
       })
@@ -118,9 +116,7 @@ describe('KeyStore', () => {
         .end((err, res) => {
           res.should.have.status(200)
           res.body.should.be.a('object')
-          res.body.key.should.eql('myKey')
           res.body.value.should.eql('myValue')
-          res.body.timestamp.should.not.be.null
           done()
         })
       })
@@ -178,9 +174,7 @@ describe('KeyStore', () => {
             .end((err, res) => {
               res.should.have.status(200)
               res.body.should.be.a('object')
-              res.body.key.should.eql('key')
               res.body.value.should.eql('prevValue')
-              res.body.timestamp.should.not.be.null
               done()
             })
           })
