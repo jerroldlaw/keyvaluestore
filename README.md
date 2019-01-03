@@ -2,6 +2,8 @@
 
 A version controlled key-value store with a HTTP API. This project is done using a Node.js Express server as the backend with Postgres as the database of choice.
 
+Demo URL: https://vaultkeystore.herokuapp.com
+
 #### Installation
 ```
 ~ git clone git@github.com:jerroldlaw/keyvaluestore.git
@@ -46,6 +48,7 @@ npm start
 ```
 npm test
 ```
+The mocha and chai libraries were used to automatically test the endpoints. A screenshow below illustrates the test results.
 ![test results](https://i.imgur.com/kvD7eNM.png)
 
 ## Assumptions
